@@ -1,5 +1,10 @@
 package com.example.study.model;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@Data
 public class SearchParam {
     public String getAccount() {
         return account;
