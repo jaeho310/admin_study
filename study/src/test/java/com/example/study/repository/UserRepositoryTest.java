@@ -1,6 +1,7 @@
 package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
+import com.example.study.model.entity.Item;
 import com.example.study.model.entity.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,21 +26,25 @@ class UserRepositoryTest extends StudyApplicationTests {
         // String sql = insert into user () value (); 가아니라 오브젝트로 관리한다.
         User user = new User();
         // user.setId(10L); //자동으로 들어가므로 넣지 않는다.
-        user.setAccount("TestUser02");
+        user.setAccount("TestUser01");
         user.setEmail("TestUser01@gmail.com");
         user.setPhoneNumber("010-0000-0000");
         user.setCreatedAt(LocalDateTime.now());
-        user.setCreatedBy("TestUser2");
+        user.setCreatedBy("TestUser1");
 
         User newUser = userRepository.save(user);
         System.out.println("newUser: " +newUser);
     }
 
     @Test
+    @Transactional
     public void read() {
-        Optional<User> user = userRepository.findById(5L);
+        Optional<User> user = userRepository.findByAccount("TestUser01");
         user.ifPresent( selectedUser -> {
-            System.out.println("user : " +selectedUser);
+            selectedUser.getOrderDetailList().stream().forEach(detail -> {
+                Item item = detail.getItem();
+                System.out.println(item);
+            });
         });
     }
 
