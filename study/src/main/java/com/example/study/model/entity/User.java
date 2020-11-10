@@ -23,9 +23,17 @@ public class User {
     // 컬럼의 이름이 같으므로 적어주지 않아도 JPA가 매칭시켜준다.
     private String account;
 
+    private String password;
+
+    private String status;
+
     private String email;
 
     private String phoneNumber;
+
+    private LocalDateTime registeredAt;
+
+    private LocalDateTime unregisteredAt;
 
     // JPA가 알아서 매칭해주기에 created_at으로 만들어주지 않아도 된다.
     private LocalDateTime createdAt;
@@ -48,7 +56,7 @@ public class User {
     // user_id = order_detail.user_id
     // where item.id = ?
     // join하여 가져오므로 데이터가 커지면 느려진다.
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<OrderDetail> orderDetailList;
+//    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+//    private List<OrderDetail> orderDetailList;
 
 }

@@ -3,32 +3,35 @@ package com.example.study.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
-import javax.persistence.*;
-import java.math.BigDecimal;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
-//@ToString(exclude = {"user", "item"})
-public class OrderDetail {
-
+public class Partner {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String status;
 
-    private LocalDateTime orderAt;
+    private String address;
 
-    private LocalDateTime arrivalDate;
+    private String callCenter;
 
-    private Integer quantity;
+    private String partnerNumber;
 
-    private BigDecimal totalPrice;
+    private String businessNumber;
+
+    private String ceoName;
 
     private LocalDateTime registeredAt;
 
@@ -42,12 +45,6 @@ public class OrderDetail {
 
     private String updatedBy;
 
-    // N : 1
-    // 객체이름으로 설정해주면 알아서 userid기본키로 설정해준다.
-//    @ManyToOne
-//    private User user;
-//
-//    @ManyToOne
-//    private Item item;
 
 }
+
