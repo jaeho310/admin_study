@@ -43,6 +43,8 @@ public class Item {
 
     private String updatedBy;
 
+    private Long partnerId;
+
     // 1 : N
 //    @OneToMany(fetch = FetchType.LAZY, mappedBy = "item")
 //    private List<OrderDetail> orderDetailList;
