@@ -3,6 +3,8 @@ package com.example.study.model.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.LastModifiedBy;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -40,10 +42,12 @@ public class AdminUser {
 
     private LocalDateTime createdAt;
 
+    @CreatedBy
     private String createdBy;
 
     private LocalDateTime updatedAt;
 
+    @LastModifiedBy
     private String updatedBy;
 
 }
