@@ -12,12 +12,12 @@ import java.util.List;
 @Entity
 @NoArgsConstructor
 @Data
+@ToString(exclude = {"orderGroupList"})
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 전략옵션 설정
     private Long id;
-
 
 //    @Column(name = "account")
     // 컬럼의 이름이 같으므로 적어주지 않아도 JPA가 매칭시켜준다.
@@ -44,6 +44,8 @@ public class User {
 
     private String updatedBy;
 
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
+    private List<OrderGroup> orderGroupList;
     // 1 : N
     // 변수명은 user
     // LAZY = 지연로딩 , EAGER = 즉시로딩

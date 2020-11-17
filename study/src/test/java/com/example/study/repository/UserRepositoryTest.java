@@ -6,6 +6,7 @@ import com.example.study.model.entity.User;
 import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.util.Assert;
 
 
@@ -61,10 +62,24 @@ class UserRepositoryTest extends StudyApplicationTests {
     }
 
     @Test
+    @Transactional
     public void read() {
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-0000-0000");
-        assertNotNull(user);
-        assertEquals("Test01",user.getAccount());
+        user.getOrderGroupList().stream().forEach(orderGroup -> {
+            System.out.println("================주문묶음================");
+            System.out.println("수령인 : " + orderGroup.getRevName());
+            System.out.println("수령지 : " + orderGroup.getRevAddress());
+            System.out.println("총금액 : " + orderGroup.getTotalPrice());
+            System.out.println("총수량 : " + orderGroup.getTotalQuantity());
+            System.out.println("================주문상세================");
+
+            orderGroup.getOrderDetailList().forEach((orderDetail -> {
+                System.out.println("주문 상품 : "+orderDetail.getItem().getName());
+                System.out.println("고객센터 번호 : "+orderDetail.getItem().getPartner().getCallCenter());
+                System.out.println("주문의 상태 : " + orderDetail.getStatus());
+                System.out.println("도착예정일자 : " + orderDetail.getArrivalDate());
+            }));
+        });
     }
 
     @Test

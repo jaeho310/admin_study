@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-//@ToString(exclude = {"user", "item"})
+@ToString(exclude = {"orderGroup","item"})
 public class OrderDetail {
 
     @Id
@@ -22,17 +22,13 @@ public class OrderDetail {
 
     private String status;
 
-    private LocalDateTime orderAt;
+//    private LocalDateTime orderAt;
 
     private LocalDateTime arrivalDate;
 
     private Integer quantity;
 
     private BigDecimal totalPrice;
-
-    private LocalDateTime registeredAt;
-
-    private LocalDateTime unregisteredAt;
 
     private LocalDateTime createdAt;
 
@@ -42,12 +38,10 @@ public class OrderDetail {
 
     private String updatedBy;
 
-    // N : 1
-    // 객체이름으로 설정해주면 알아서 userid기본키로 설정해준다.
-//    @ManyToOne
-//    private User user;
-//
-//    @ManyToOne
-//    private Item item;
+    @ManyToOne
+    private OrderGroup orderGroup;
+
+    @ManyToOne
+    private Item item;
 
 }
