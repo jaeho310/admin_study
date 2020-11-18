@@ -1,0 +1,71 @@
+[33mcommit 61395320362c304af00caefbcc02ca44ac83e021[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Wed Nov 18 02:10:22 2020 +0900
+
+    Add CreatedBy LastModifiedBy
+
+[33mcommit c484c789c508ed21e2547c68ed1358f11c38d1e9[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Tue Nov 17 23:23:02 2020 +0900
+
+    Add JPA Relation
+
+[33mcommit 23f62fc3e5c23ab6d0f8feee81e29b23aeb4d25a[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Mon Nov 16 22:00:30 2020 +0900
+
+    Add ItemRepositoryTest
+
+[33mcommit 3dbea4ec50654ce14371e9fa07034ac57f31c26f[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Sun Nov 15 13:23:58 2020 +0900
+
+    Add partnerRepositoryTest
+
+[33mcommit 9a12b264347d586d38fc78bb723c285fcd8d0dfd[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Thu Nov 12 21:41:32 2020 +0900
+
+    Add UserRepositoryTest
+
+[33mcommit e07edd5505462b1ae251bc8add9b70b26956ae83[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Thu Nov 12 18:41:31 2020 +0900
+
+    Add entitiy
+
+[33mcommit d8028616ccb7e8a05757133587ac15bfa6b0dd89[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Tue Nov 10 19:32:53 2020 +0900
+
+    Add entitiy
+
+[33mcommit a9f1413b1cca1fd44e680d19d598a1a6aa9429cf[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Fri Nov 6 17:36:27 2020 +0900
+
+    Add query method
+
+[33mcommit 578e81271e580d077767d6bdbe227a9b18a78ad3[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Thu Nov 5 23:31:08 2020 +0900
+
+    Add Transactional Test
+
+[33mcommit c30527082fe2af10b08170bc4023243df29b5453[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Wed Nov 4 17:43:25 2020 +0900
+
+    add Model
+
+[33mcommit bb2ac9dae9e15c94359e2b9aa835bdd50d711705[m
+Author: jaeho310 <chlwogh1993@gmail.com>
+Date:   Wed Nov 4 16:21:54 2020 +0900
+
+    first commit
+
+[33mcommit 5ca0680b5ebdca3d73c32c0f2f593e944dfce8bb[m
+Author: jaeho310 <69457888+jaeho310@users.noreply.github.com>
+Date:   Wed Nov 4 16:19:28 2020 +0900
+
+    Initial commit

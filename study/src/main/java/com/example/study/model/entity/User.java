@@ -20,7 +20,6 @@ import java.util.List;
 @Data
 @ToString(exclude = {"orderGroupList"})
 @EntityListeners(AuditingEntityListener.class)
-@Builder
 @Accessors(chain = true) // 생성자뿐만 아니라 세터를 사용하여 객체의 멤버를 변경할때도 해당객체를 리턴해줘서 빌더패턴처럼 사용가능
 public class User {
 
