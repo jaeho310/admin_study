@@ -2,13 +2,13 @@ package com.example.study.ifs;
 
 import com.example.study.model.network.Header;
 
-public interface CrudInterface {
+public interface CrudInterface<Req, Res> {
 
-    Header create();
+    Header<Res> create(Req request);
 
-    Header read(Long id);
+    Header<Res> read(Long id);
 
-    Header update();
+    Header<Res> update(Req request);
 
-    Header delete();
+    Header delete(Long id);
 }
