@@ -1,6 +1,12 @@
 package com.example.study.model.entity;
 
 import lombok.*;
+import lombok.experimental.Accessors;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +19,9 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @ToString(exclude = {"orderGroupList"})
+@EntityListeners(AuditingEntityListener.class)
+@Builder
+@Accessors(chain = true) // 생성자뿐만 아니라 세터를 사용하여 객체의 멤버를 변경할때도 해당객체를 리턴해줘서 빌더패턴처럼 사용가능
 public class User {
 
     @Id
@@ -36,12 +45,16 @@ public class User {
     private LocalDateTime unregisteredAt;
 
     // JPA가 알아서 매칭해주기에 created_at으로 만들어주지 않아도 된다.
+    @CreatedDate
     private LocalDateTime createdAt;
 
+    @CreatedBy
     private String createdBy;
 
+    @LastModifiedDate
     private LocalDateTime updatedAt;
 
+    @LastModifiedBy
     private String updatedBy;
 
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
