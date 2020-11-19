@@ -15,8 +15,10 @@ import java.util.List;
 //@Data // 게터세터
 //테이블이름과 같다면 안써도 된다.
 //@Table(name ="user")
+@Builder
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 @ToString(exclude = {"orderGroupList"})
 @EntityListeners(AuditingEntityListener.class)
