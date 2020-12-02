@@ -14,11 +14,7 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
-public class UserApiLogicService implements CrudInterface<UserApiRequest, UserApiResponse> {
-
-    @Autowired
-    private UserRepository userRepository;
-
+public class UserApiLogicService extends BaseService<UserApiRequest, UserApiResponse, User> {
     // Todo
     // 1. request data
     // 2. user 생성
@@ -38,7 +34,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
                 .email(userApiRequest.getEmail())
                 .registeredAt(LocalDateTime.now())
                 .build();
-        User newUser = userRepository.save(user);
+        User newUser = baseRepository.save(user);
 
         // 3. 생성된 데이터 -> userApiResponse return
 
@@ -49,7 +45,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
     @Override
     public Header<UserApiResponse> read(Long id) {
 
-        Optional<User> optional = userRepository.findById(id);
+        Optional<User> optional = baseRepository.findById(id);
 
         return optional.map(user -> response(user)).orElseGet(()->Header.ERROR("데이터 없음"));
     }
@@ -58,7 +54,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
     public Header<UserApiResponse> update(Header<UserApiRequest> request) {
         UserApiRequest userApiRequest = request.getData();
 
-        Optional<User> optional = userRepository.findById(userApiRequest.getId());
+        Optional<User> optional = baseRepository.findById(userApiRequest.getId());
 
         return optional.map( user -> {
                 user.setAccount(userApiRequest.getPassword())
@@ -69,7 +65,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
                     .setUnregisteredAt(userApiRequest.getUnregisteredAt());
                 return user;
         })
-        .map(user -> userRepository.save(user)) // id가 있으므로 update
+        .map(user -> baseRepository.save(user)) // id가 있으므로 update
         .map(updatedUser -> response(updatedUser))
         .orElseGet(() -> Header.ERROR("데이터 없음"));
 
@@ -77,8 +73,8 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
     @Override
     public Header delete(Long id) {
-        return userRepository.findById(id).map( user ->{
-            userRepository.delete(user);
+        return baseRepository.findById(id).map( user ->{
+            baseRepository.delete(user);
             return Header.OK();
         }).orElseGet(() -> Header.ERROR("데이터 없음"));
     }

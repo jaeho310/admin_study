@@ -12,10 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiRequest, OrderDetailApiResponse> {
+public class OrderDetailApiLogicService extends BaseService<OrderDetailApiRequest, OrderDetailApiResponse, OrderDetail> {
 
-    @Autowired
-    private OrderDetailRepository orderDetailRepository;
 
     @Autowired
     private OrderGroupRepository orderGroupRepository;
@@ -36,20 +34,20 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
                 .item(itemRepository.getOne(request.getData().getItemId()))
                 .build();
 
-        OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
+        OrderDetail newOrderDetail = baseRepository.save(orderDetail);
         return response(newOrderDetail);
     }
 
     @Override
     public Header<OrderDetailApiResponse> read(Long id) {
-        return orderDetailRepository.findById(id)
+        return baseRepository.findById(id)
                 .map(orderDetail -> response(orderDetail))
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
     public Header<OrderDetailApiResponse> update(Header<OrderDetailApiRequest> request) {
-        return orderDetailRepository.findById(request.getData().getId())
+        return baseRepository.findById(request.getData().getId())
                 .map(orderDetail -> {
                     orderDetail.setStatus(request.getData().getStatus())
                             .setArrivalDate(request.getData().getArrivalDate())
@@ -57,16 +55,16 @@ public class OrderDetailApiLogicService implements CrudInterface<OrderDetailApiR
                             .setTotalPrice(request.getData().getTotalPrice());
                     return orderDetail;
                 })
-                .map(orderDetail -> orderDetailRepository.save(orderDetail))
+                .map(orderDetail -> baseRepository.save(orderDetail))
                 .map(this::response)
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
     public Header delete(Long id) {
-        return orderDetailRepository.findById(id)
+        return baseRepository.findById(id)
                 .map(orderDetail -> {
-                    orderDetailRepository.delete(orderDetail);
+                    baseRepository.delete(orderDetail);
                     return Header.OK();
                 })
                 .orElseGet(()->Header.ERROR("데이터 없음"));

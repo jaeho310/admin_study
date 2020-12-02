@@ -12,10 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, PartnerApiResponse> {
-
-    @Autowired
-    private PartnerRepository partnerRepository;
+public class PartnerApiLogicService extends BaseService<PartnerApiRequest, PartnerApiResponse, Partner> {
 
     @Autowired
     private CategoryRepository categoryRepository;
@@ -36,13 +33,13 @@ public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, 
                 .category(categoryRepository.getOne(request.getData().getCategoryId()))
                 .build();
 
-        Partner newPartner = partnerRepository.save(partner);
+        Partner newPartner = baseRepository.save(partner);
         return response(newPartner);
     }
 
     @Override
     public Header<PartnerApiResponse> read(Long id) {
-        return partnerRepository.findById(id)
+        return baseRepository.findById(id)
                 .map(partner -> response(partner))
                 .orElseGet(()->Header.ERROR("데이터 없음"));
     }
@@ -50,7 +47,7 @@ public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, 
     @Override
     public Header<PartnerApiResponse> update(Header<PartnerApiRequest> request) {
 
-        return partnerRepository.findById(request.getData().getId())
+        return baseRepository.findById(request.getData().getId())
                 .map(partner -> {
                     partner.setName(request.getData().getName())
                             .setStatus(request.getData().getStatus())
@@ -71,9 +68,9 @@ public class PartnerApiLogicService implements CrudInterface<PartnerApiRequest, 
 
     @Override
     public Header delete(Long id) {
-        return partnerRepository.findById(id)
+        return baseRepository.findById(id)
                 .map(partner -> {
-                    partnerRepository.delete(partner);
+                    baseRepository.delete(partner);
                         return Header.OK();
                 })
                 .orElseGet(()->Header.ERROR("데이터 없음"));
