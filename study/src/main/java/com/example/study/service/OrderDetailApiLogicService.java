@@ -9,7 +9,10 @@ import com.example.study.repository.ItemRepository;
 import com.example.study.repository.OrderDetailRepository;
 import com.example.study.repository.OrderGroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OrderDetailApiLogicService extends BaseService<OrderDetailApiRequest, OrderDetailApiResponse, OrderDetail> {
@@ -82,5 +85,10 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
                 .build();
         return Header.OK(body);
 
+    }
+
+    @Override
+    public Header<List<OrderDetailApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

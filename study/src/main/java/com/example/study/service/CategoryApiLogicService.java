@@ -7,7 +7,10 @@ import com.example.study.model.network.request.CategoryApiRequest;
 import com.example.study.model.network.response.CategoryApiResponse;
 import com.example.study.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CategoryApiLogicService extends BaseService<CategoryApiRequest, CategoryApiResponse, Category> {
@@ -63,5 +66,10 @@ public class CategoryApiLogicService extends BaseService<CategoryApiRequest, Cat
                 .type(category.getType())
                 .build();
         return Header.OK(categoryApiResponse);
+    }
+
+    @Override
+    public Header<List<CategoryApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }

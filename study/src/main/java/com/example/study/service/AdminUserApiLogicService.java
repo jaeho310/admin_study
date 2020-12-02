@@ -7,9 +7,11 @@ import com.example.study.model.network.request.AdminUserApiRequest;
 import com.example.study.model.network.response.AdminUserApiResponse;
 import com.example.study.repository.AdminUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.swing.text.html.parser.Entity;
+import java.util.List;
 
 @Service
 public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, AdminUserApiResponse, AdminUser> {
@@ -90,5 +92,10 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
                 .build();
 
         return Header.OK(adminUserApiResponse);
+    }
+
+    @Override
+    public Header<List<AdminUserApiResponse>> search(Pageable pageable) {
+        return null;
     }
 }
