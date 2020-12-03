@@ -1,7 +1,10 @@
 package com.example.study.service;
 
 import com.example.study.ifs.CrudInterface;
+import com.example.study.model.entity.OrderGroup;
+import com.example.study.model.entity.User;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,4 +23,6 @@ public abstract class BaseService<Req, Res, Entity> implements CrudInterface<Req
     protected JpaRepository<Entity, Long> baseRepository;
 
     public abstract Header<List<Res>> search(Pageable pageable);
+
+    public abstract Header<UserOrderInfoApiResponse> orderInfo(Long id);
 }

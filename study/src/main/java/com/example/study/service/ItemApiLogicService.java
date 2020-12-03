@@ -3,6 +3,7 @@ package com.example.study.service;
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.Item;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import com.example.study.model.network.request.ItemApiRequest;
 import com.example.study.model.network.response.ItemApiResponse;
 import com.example.study.repository.ItemRepository;
@@ -80,7 +81,7 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
                 .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
-    private Header<ItemApiResponse> response(Item item) {
+    public Header<ItemApiResponse> response(Item item) {
 
         ItemApiResponse body = ItemApiResponse.builder()
                 .id(item.getId())
@@ -100,6 +101,11 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
 
     @Override
     public Header<List<ItemApiResponse>> search(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Header<UserOrderInfoApiResponse> orderInfo(Long id) {
         return null;
     }
 }

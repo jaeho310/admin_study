@@ -4,6 +4,7 @@ import com.example.study.controller.CrudController;
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.User;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import com.example.study.model.network.request.UserApiRequest;
 import com.example.study.model.network.response.UserApiResponse;
 import com.example.study.service.UserApiLogicService;
@@ -18,4 +19,8 @@ import javax.annotation.PostConstruct;
 @RequestMapping("/api/user")
 public class UserApiController extends CrudController<UserApiRequest, UserApiResponse, User> {
 
+    @GetMapping("/{id}/orderInfo")
+    public Header<UserOrderInfoApiResponse> orderInfo(@PathVariable Long id) {
+        return baseService.orderInfo(id);
+    }
 }

@@ -3,6 +3,7 @@ package com.example.study.service;
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.OrderDetail;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import com.example.study.model.network.request.OrderDetailApiRequest;
 import com.example.study.model.network.response.OrderDetailApiResponse;
 import com.example.study.repository.ItemRepository;
@@ -89,6 +90,11 @@ public class OrderDetailApiLogicService extends BaseService<OrderDetailApiReques
 
     @Override
     public Header<List<OrderDetailApiResponse>> search(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Header<UserOrderInfoApiResponse> orderInfo(Long id) {
         return null;
     }
 }

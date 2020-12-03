@@ -1,6 +1,7 @@
 package com.example.study.ifs;
 
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 
 public interface CrudInterface<Req, Res> {
 
@@ -11,4 +12,5 @@ public interface CrudInterface<Req, Res> {
     Header<Res> update(Header<Req> request);
 
     Header delete(Long id);
+
 }

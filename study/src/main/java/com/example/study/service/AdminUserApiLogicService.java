@@ -3,6 +3,7 @@ package com.example.study.service;
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.AdminUser;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import com.example.study.model.network.request.AdminUserApiRequest;
 import com.example.study.model.network.response.AdminUserApiResponse;
 import com.example.study.repository.AdminUserRepository;
@@ -96,6 +97,11 @@ public class AdminUserApiLogicService extends BaseService<AdminUserApiRequest, A
 
     @Override
     public Header<List<AdminUserApiResponse>> search(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Header<UserOrderInfoApiResponse> orderInfo(Long id) {
         return null;
     }
 }

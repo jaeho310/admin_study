@@ -3,6 +3,7 @@ package com.example.study.service;
 import com.example.study.ifs.CrudInterface;
 import com.example.study.model.entity.Partner;
 import com.example.study.model.network.Header;
+import com.example.study.model.network.UserOrderInfoApiResponse;
 import com.example.study.model.network.request.PartnerApiRequest;
 import com.example.study.model.network.response.PartnerApiResponse;
 import com.example.study.repository.CategoryRepository;
@@ -99,6 +100,11 @@ public class PartnerApiLogicService extends BaseService<PartnerApiRequest, Partn
 
     @Override
     public Header<List<PartnerApiResponse>> search(Pageable pageable) {
+        return null;
+    }
+
+    @Override
+    public Header<UserOrderInfoApiResponse> orderInfo(Long id) {
         return null;
     }
 }
